@@ -1,16 +1,21 @@
 <template>
   <div id="app">
+    <h-header>ddd</h-header>
+    <cube-button>111</cube-button>
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import HHeader from "./components/Header";
 
 export default {
   name: 'app',
   components: {
+    HHeader,
     HelloWorld
   }
 }
