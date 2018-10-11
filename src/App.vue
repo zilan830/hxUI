@@ -1,33 +1,21 @@
 <template>
-  <div id="app">
-    <h-header>ddd</h-header>
-    <cube-button>111</cube-button>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-
-  </div>
+    <div id="app">
+        <router-view/>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import HHeader from "./components/Header";
-
-export default {
-  name: 'app',
-  components: {
-    HHeader,
-    HelloWorld
+  export default {
+    name: 'app',
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    #app {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        height:100vh;
+    }
 </style>

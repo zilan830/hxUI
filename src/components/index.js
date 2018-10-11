@@ -1,10 +1,13 @@
+/* eslint-disable no-new */
 import Vue from 'vue'
 import HHeader from './Header.vue'
+import FormEditWrapper from './formItemEdit/formEditWrapper.vue'
 import './cube-ui'
-import {createAPI} from 'cube-ui'
+import { createAPI as cubeAPI } from 'cube-ui'
 
 const Components = {
   HHeader,
+  FormEditWrapper
 };
 
 Object.keys(Components).forEach(name => {
@@ -13,5 +16,5 @@ Object.keys(Components).forEach(name => {
 
 export default Components;
 
-export const createAPI = createAPI;
+export const createAPI = cubeAPI;
 
