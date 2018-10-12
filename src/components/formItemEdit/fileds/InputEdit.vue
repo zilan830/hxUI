@@ -18,14 +18,15 @@
                 </cube-form-group>
             </cube-form>
             <i class="cubeic-edit" @click="handleInput()"></i>
+
         </div>
-        <div v-show="inputData.isInput" class="input-attributes">
-            <cube-form
-                    :model="model"
-                    :schema="schema"
-            >
-            </cube-form>
-        </div>
+        <!--<div v-show="inputData.isInput" class="input-attributes">-->
+            <!--<cube-form-->
+                    <!--:model="model"-->
+                    <!--:schema="schema"-->
+            <!--&gt;-->
+            <!--</cube-form>-->
+        <!--</div>-->
     </div>
 </template>
 
@@ -63,10 +64,11 @@
                   modelKey: 'typeValue',
                   label: '类型',
                   props: {
-                    options: [{text: 'text', value: 1}, {text: 'number', value: 2}, {
-                      text: 'password',
-                      value: 3
-                    }, {text: 'date', value: 4}],
+                    options: [
+                      {text: '文字', value: 1},
+                      {text: '数字', value: 2},
+                      {text: '密码', value: 3},
+                      {text: '日期', value: 4}],
                   },
                   rules: {
                     change: (value) => this.changeType(value)
@@ -89,10 +91,11 @@
         this.inputData.isInput = !isShow;
       },
       changeType(value){
-        const options = [{text: 'text', value: 1}, {text: 'number', value: 2}, {
-          text: 'password',
-          value: 3
-        }, {text: 'date', value: 4}];
+        const options = [
+          {text: 'text', value: 1},
+          {text: 'number', value: 2},
+          {text: 'password', value: 3},
+          {text: 'date', value: 4}];
         for (const item of options) {
           if (item.value === value) {
             this.inputData.option.type = item.text;
@@ -113,8 +116,8 @@
         flex-direction: column
         .form-item-inner
             display: flex
-            >i
-                width: 100px
+            > i
+                width: 50px
                 display: flex
                 justify-content: center
                 align-items: center

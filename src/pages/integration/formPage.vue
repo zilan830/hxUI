@@ -8,14 +8,12 @@
                         <el-button class="component-item" @click="handleAdd('input-edit')">
                             <i class="iconfont icon-input"></i>
                         </el-button>
-                        <el-button class="component-item" @click="handleAdd('input-edit')">
-                            <i class="iconfont icon-input"></i>
-                        </el-button>
                     </div>
                 </div>
                 <div class="component-doc">
-                    <p class="component-header">文档说明</p>
-
+                    <p class="component-header">组件属性</p>
+                    <form-attr-wrapper v-if="attrColumn.length > 0" :field="attrItem"
+                                       @getData="getData"></form-attr-wrapper>
                 </div>
             </div>
         </template>
@@ -29,19 +27,27 @@
 
 <script>
   import InnerWindow from './../innerWindow.vue'
+  import FormAttrWrapper from "../../components/formItemEdit/formAttrWrapper";
 
   export default {
     components: {
+      FormAttrWrapper,
       InnerWindow,
     },
     data(){
       return {
-        formData: []
+        formData: [],
+        attrColumn: [],
+        attrItem: {},
+        componentIndex: 0,
       }
     },
     methods: {
       handleAdd(type){
         this.formData.push({type})
+      },
+      getData(data){
+        this.attrColumn.push(data)
       }
     }
   }

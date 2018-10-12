@@ -2,12 +2,14 @@
 import Vue from 'vue'
 import HHeader from './Header.vue'
 import FormEditWrapper from './formItemEdit/formEditWrapper.vue'
+import FormAttrWrapper from './formItemEdit/formAttrWrapper.vue'
 import './cube-ui'
 import { createAPI as cubeAPI } from 'cube-ui'
 
 const Components = {
   HHeader,
-  FormEditWrapper
+  FormEditWrapper,
+  FormAttrWrapper
 };
 
 Object.keys(Components).forEach(name => {
