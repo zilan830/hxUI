@@ -3,7 +3,9 @@
         <div class="hx-header-left">
             <slot name="overwrite-left">
                 <transition :name="transition">
-                    <a class="hx-header-back" v-show="_leftOptions.showBack" @click.stop="onClickBack">{{ typeof _leftOptions.backText === 'undefined' ? '返回' : _leftOptions.backText}}</a>
+                    <a class="hx-header-back" v-show="_leftOptions.showBack" @click.stop="onClickBack">
+                        {{ typeof _leftOptions.backText === 'undefined' ? '返回' : _leftOptions.backText}}
+                    </a>
                 </transition>
                 <transition :name="transition">
                     <div class="left-arrow" @click="onClickBack" v-show="_leftOptions.showBack"></div>
@@ -76,21 +78,21 @@
   }
 </script>
 
-<style lang="less">
-    @import '../util/style/variable.less';
+<style lang="stylus" rel="stylesheet/stylus">
+    @require '~cube-ui/src/common/stylus/variable.styl';
 
     .hx-header {
         position: relative;
         padding: 3px 0;
         box-sizing: border-box;
-        background-color: @header-background-color;
+        background-color: lightness($picker-subtitle-color,85%);
     }
     .hx-header .hx-header-title {
         line-height: 40px;
         text-align: center;
         font-size: 18px;
-        font-weight: 400;
-        color: @header-title-color;
+        font-weight: bold;
+        color: $dialog-title-color;
     }
     .hx-header-title-area, .hx-header .hx-header-title {
         margin: 0 88px;
@@ -109,12 +111,12 @@
         display: block;
         font-size: 14px;
         line-height: 21px;
-        color: @header-text-color;
+        color: $dialog-title-color;
     }
     .hx-header .hx-header-left a,.hx-header .hx-header-left button,.hx-header .hx-header-right a,.hx-header .hx-header-right button {
         float: left;
         margin-right: 8px;
-        color: @header-text-color;
+        color: $dialog-title-color;
     }
     .hx-header .hx-header-left a:active,.hx-header .hx-header-left button:active,.hx-header .hx-header-right a:active,.hx-header .hx-header-right button:active {
         opacity: .5
@@ -137,8 +139,8 @@
             position: absolute;
             width: 12px;
             height: 12px;
-            border: 1px solid @header-arrow-color;
-            border-width: 1px 0 0 1px;
+            border: 1px solid $color-orange;
+            border-width: 2px 0 0 2px;
             transform: rotate(315deg);
             top: 8px;
             left: 7px;

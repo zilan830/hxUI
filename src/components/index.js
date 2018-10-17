@@ -1,6 +1,8 @@
 /* eslint-disable no-new */
 import Vue from 'vue'
 import HHeader from './Header.vue'
+import HLayout from './Layout.vue'
+import HTarbar from './TarBar.vue'
 import FormEditWrapper from './formItemEdit/formEditWrapper.vue'
 import FormAttrWrapper from './formItemEdit/formAttrWrapper.vue'
 import './cube-ui'
@@ -9,7 +11,9 @@ import { createAPI as cubeAPI } from 'cube-ui'
 const Components = {
   HHeader,
   FormEditWrapper,
-  FormAttrWrapper
+  FormAttrWrapper,
+  HLayout,
+  HTarbar
 };
 
 Object.keys(Components).forEach(name => {

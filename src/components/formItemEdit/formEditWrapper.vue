@@ -1,6 +1,6 @@
 <template>
     <div class="form-list-container">
-        <component :is="field.type"></component>
+        <component :is="field.type" :index="field.index" :attr="field.attr" @remove="remove"></component>
         <slot></slot>
     </div>
 </template>
@@ -12,12 +12,14 @@
       name:'form-edit-wrapper',
       props:{
         field:{
-          type:Object
+          type: Object,
+          index: Number,
+          attr: Object
         }
       },
       methods:{
-        componentName(){
-
+        remove(index){
+          this.$emit('remove',index)
         }
       },
       components

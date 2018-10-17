@@ -1,6 +1,6 @@
 <template>
     <div class="form-list-container">
-        <component :is="field.type" :title="field.title"  @fetchData="fetchData"></component>
+        <component :is="field.type" :index="field.index" :attr="field.attr" @fetchData="fetchData"></component>
         <slot></slot>
     </div>
 </template>
@@ -9,20 +9,20 @@
   import components from './attr/components'
 
   export default {
-    name:'form-attr-wrapper',
-    props:{
-      field:{
-        title:String,
-        type:Object
+    name: 'form-attr-wrapper',
+    props: {
+      field: {
+        type: Object,
+        index: Number,
+        attr: Object
       },
-
     },
-    methods:{
+    methods: {
       componentName(){
 
       },
       fetchData(data){
-        this.$emit('getData',data)
+        this.$emit('getData', data)
       }
     },
     components

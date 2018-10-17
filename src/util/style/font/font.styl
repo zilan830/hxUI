@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';  /* project id 867509 */
-  src: url('//at.alicdn.com/t/font_867509_1prm30hqglx.eot');
-  src: url('//at.alicdn.com/t/font_867509_1prm30hqglx.eot?#iefix') format('embedded-opentype'),
-          url('//at.alicdn.com/t/font_867509_1prm30hqglx.woff') format('woff'),
-          url('//at.alicdn.com/t/font_867509_1prm30hqglx.ttf') format('truetype'),
-          url('//at.alicdn.com/t/font_867509_1prm30hqglx.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_867509_s6az1jxd6p.eot');
+  src: url('//at.alicdn.com/t/font_867509_s6az1jxd6p.eot?#iefix') format('embedded-opentype'),
+          url('//at.alicdn.com/t/font_867509_s6az1jxd6p.woff') format('woff'),
+          url('//at.alicdn.com/t/font_867509_s6az1jxd6p.ttf') format('truetype'),
+          url('//at.alicdn.com/t/font_867509_s6az1jxd6p.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -17,3 +17,22 @@
 }
 
 .icon-input:before { content: "\e71a";}
+
+.icon-copy{
+  display: inline-block
+  margin: 0 5px 10px 5px
+  padding: 5px
+  cursor: pointer
+  background-color: #e6f2f2
+  border-radius: 3px
+  &:hover{
+    transition: all 0.3s
+    background-color: teal
+    color: white
+  }
+  &:active{
+    transition: all 0.3s
+    background-color: #e6f2f2
+  }
+}
+.icon-copy:before { content: "\e71b";}

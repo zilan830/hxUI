@@ -5,13 +5,16 @@
         </div>
         <div class="mobile-container">
             <div class="mobile-inner">
-                <header class="mobile-header">
+                <header class="mobile-header" v-if="!simpleMobile">
                     <h1>{{title}}</h1>
                 </header>
-                <div class="mobile-content">
+                <div class="mobile-content" v-if="!simpleMobile">
                     <cube-scroll>
                         <slot name="mobile"></slot>
                     </cube-scroll>
+                </div>
+                <div class="no-scroll">
+                    <slot name="simple-mobile"></slot>
                 </div>
             </div>
         </div>
@@ -22,7 +25,9 @@
   export default {
     name: 'inner-window',
     props: {
-      title: String
+      title: String,
+      //主要给展示整体框架用
+      simpleMobile: Boolean
     }
   }
 
@@ -60,7 +65,7 @@
                 border-top: none
                 background-color: #f7f7f7
                 .mobile-header
-                    background-color: #edf0f4
+                    background-color: #d9d9d9
                     box-shadow: 0 2px 1px #e9eaea
                     height: 44px
                     display: flex
@@ -73,5 +78,8 @@
                 .mobile-content
                     overflow: auto
                     height: 500px
+                .no-scroll
+                    height: 100%
+                    overflow: auto
 
 </style>
