@@ -85,14 +85,15 @@
         position: relative;
         padding: 3px 0;
         box-sizing: border-box;
-        background-color: lightness($picker-subtitle-color,85%);
+        background-color: lightness($action-sheet-color,90%);
+        box-shadow: 0 2px 1px lightness($action-sheet-color,95%);
     }
     .hx-header .hx-header-title {
         line-height: 40px;
         text-align: center;
         font-size: 18px;
         font-weight: bold;
-        color: $dialog-title-color;
+        color: $action-sheet-title-color;
     }
     .hx-header-title-area, .hx-header .hx-header-title {
         margin: 0 88px;
@@ -111,12 +112,12 @@
         display: block;
         font-size: 14px;
         line-height: 21px;
-        color: $dialog-title-color;
+        color: $action-sheet-title-color;
     }
     .hx-header .hx-header-left a,.hx-header .hx-header-left button,.hx-header .hx-header-right a,.hx-header .hx-header-right button {
         float: left;
         margin-right: 8px;
-        color: $dialog-title-color;
+        color: $action-sheet-title-color;
     }
     .hx-header .hx-header-left a:active,.hx-header .hx-header-left button:active,.hx-header .hx-header-right a:active,.hx-header .hx-header-right button:active {
         opacity: .5
@@ -139,7 +140,7 @@
             position: absolute;
             width: 12px;
             height: 12px;
-            border: 1px solid $color-orange;
+            border: 1px solid $action-sheet-active-color;
             border-width: 2px 0 0 2px;
             transform: rotate(315deg);
             top: 8px;

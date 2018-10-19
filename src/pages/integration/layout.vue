@@ -1,7 +1,7 @@
 <template>
     <inner-window title="layout" :simpleMobile="simpleMobile">
         <template slot="doc">
-            <div class="copy-alert" v-show="this.successShow">
+            <div class="copy-alert" v-show="successShow">
                 <el-alert
                         title="复制成功"
                         type="success"

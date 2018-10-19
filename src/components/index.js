@@ -3,6 +3,8 @@ import Vue from 'vue'
 import HHeader from './Header.vue'
 import HLayout from './Layout.vue'
 import HTarbar from './TarBar.vue'
+import HxCell from './cell/CellBox.vue'
+import HxCells from './cell/CellForm.vue'
 import FormEditWrapper from './formItemEdit/formEditWrapper.vue'
 import FormAttrWrapper from './formItemEdit/formAttrWrapper.vue'
 import './cube-ui'
@@ -13,7 +15,9 @@ const Components = {
   FormEditWrapper,
   FormAttrWrapper,
   HLayout,
-  HTarbar
+  HTarbar,
+  HxCell,
+  HxCells
 };
 
 Object.keys(Components).forEach(name => {

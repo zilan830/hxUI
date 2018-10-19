@@ -1,14 +1,14 @@
 <template>
-    <div class="layout-container">
-        <div class="layout-header">
+    <div class="hx-layout-container">
+        <div class="hx-layout-header">
             <slot name="header"></slot>
         </div>
-        <div class="layout-content">
+        <div class="hx-layout-content">
             <cube-scroll>
                 <slot name="content"></slot>
             </cube-scroll>
         </div>
-        <div class="layout-footer">
+        <div class="hx-layout-footer">
             <slot name="footer"></slot>
         </div>
     </div>
@@ -32,13 +32,13 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-    .layout-container
+    .hx-layout-container
         height: 100%
         display: flex
         overflow: hidden
         flex-direction: column
         background-color: #f7f7f7
-        .layout-content
+        .hx-layout-content
             flex: 1
             overflow: auto
 

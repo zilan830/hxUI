@@ -6,7 +6,7 @@
         <section class="content-container">
             <nav class="content-menu">
                 <el-menu
-                        default-active="1-1"
+                        :default-active="defaultActive"
                         class="el-menu-vertical-demo"
                         @open="handleOpen"
                         @select="handleSelect"
@@ -46,8 +46,19 @@
     },
     data () {
       return {
-        hxMenu: HxMenuData
+        hxMenu: HxMenuData,
+        defaultActive: '1-1'
       }
+    },
+    created(){
+      //菜单更新
+       const menuPath = this.$route.path;
+       for (const item of this.hxMenu[0].children) {
+         if(item.path === menuPath){
+           this.defaultActive = item.index;
+           break;
+         }
+       }
     },
     methods: {
       handleOpen(){

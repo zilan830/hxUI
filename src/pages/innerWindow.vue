@@ -65,7 +65,7 @@
                 border-top: none
                 background-color: #f7f7f7
                 .mobile-header
-                    background-color: #d9d9d9
+                    background-color: #e6e6e6
                     box-shadow: 0 2px 1px #e9eaea
                     height: 44px
                     display: flex
@@ -75,6 +75,7 @@
                     > h1
                         line-height: 44px
                         font-weight: bold
+                        color: #333
                 .mobile-content
                     overflow: auto
                     height: 500px

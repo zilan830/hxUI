@@ -35,6 +35,11 @@ const hxMenu = [
         name: 'tabbar',
         path: '/tabbar'
       },
+      {
+        index: '1-6',
+        name: 'cell',
+        path: '/cell'
+      },
     ],
   },
 

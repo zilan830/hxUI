@@ -8,6 +8,7 @@ import TabBar from '../../pages/integration/tabbar.vue'
 import TestHome from '../../pages/integration/testPages/home.vue'
 import TestApply from '../../pages/integration/testPages/apply.vue'
 import TestMe from '../../pages/integration/testPages/me.vue'
+import Cell from '../../pages/integration/cell.vue'
 
 
 Vue.use(Router);
@@ -54,6 +55,11 @@ export default new Router({
               component: TestMe
             },
           ]
+        },
+        {
+          path: '/cell',
+          component: Cell,
+          meta: {index: '3'},
         },
       ]
     },
