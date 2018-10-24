@@ -9,7 +9,7 @@
   import components from './attr/components'
 
   export default {
-    name: 'form-attr-wrapper',
+    name: 'hx-attr-wrapper',
     props: {
       field: {
         type: Object,

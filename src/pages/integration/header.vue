@@ -27,14 +27,14 @@
         <template slot="mobile">
             <ul class="component-lists">
                 <li :class="{'component-item':true, active:this.index === 0}" @click="handleClick(0)">
-                    <h-header :left-options="{showBack: false}">
+                    <hx-header :left-options="{showBack: false}">
                         第一个
-                    </h-header>
+                    </hx-header>
                 </li>
                 <li :class="{'component-item':true, active:this.index === 1}" @click="handleClick(1)">
-                    <h-header>
+                    <hx-header>
                         第二个
-                    </h-header>
+                    </hx-header>
                 </li>
             </ul>
         </template>
@@ -53,11 +53,11 @@
         codeData: [
           {
             isClick: true,
-            code: '<h-header :left-options="{showBack: false}">第一个</h-header>'
+            code: '<hx-header :left-options="{showBack: false}">第一个</hx-header>'
           },
           {
             isClick: false,
-            code: '<h-header>第二个</h-header>'
+            code: '<hx-header>第二个</hx-header>'
           },
         ],
         index: 0,

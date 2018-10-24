@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import HHeader from './components/Header.vue'
+import HHeader from './components/header/Header.vue'
 
 //全局注册组件，方便使用
 const components = {

@@ -4,9 +4,11 @@
             <slot name="header"></slot>
         </div>
         <div class="hx-layout-content">
-            <cube-scroll>
-                <slot name="content"></slot>
-            </cube-scroll>
+            <main class="hx-main-content">
+                <cube-scroll>
+                    <slot name="content"></slot>
+                </cube-scroll>
+            </main>
         </div>
         <div class="hx-layout-footer">
             <slot name="footer"></slot>
@@ -16,7 +18,7 @@
 
 <script>
   export default {
-    name: 'h-layout',
+    name: 'hx-layout',
     data() {
       return {}
     },
@@ -41,6 +43,8 @@
         .hx-layout-content
             flex: 1
             overflow: auto
+            .hx-main-content
+                margin: 10px
 
 
 </style>

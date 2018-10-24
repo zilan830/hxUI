@@ -27,10 +27,11 @@
         <template slot="mobile">
             <ul class="component-lists">
                 <li :class="{'component-item':true, active:this.index === 0}" @click="handleClick(0)">
-                    <hx-cell v-for="item in dataLists" :dataItem="item" @click="item.isClick ? item.onClick() : {}"></hx-cell>
+                    <hx-group :data="dataLists">
+                    </hx-group>
                 </li>
                 <li :class="{'component-item':true, active:this.index === 1}" @click="handleClick(1)">
-                    <hx-cells :dataSource="dataSource"></hx-cells>
+
                 </li>
             </ul>
         </template>
@@ -58,23 +59,33 @@
         ],
         index: 0,
         successShow: false,
-        dataLists:[
+        dataLists: [
           {
-            iconLeft: 'icon-input',
-            name: 'testadfadsfadsfasdfasdfsddsdfasdfsaf',
-            iconRight: 'icon-input',
-            value: 'test',
-            isClick: true,
-            onClick: this.handleItemClick
+            legend:'标题1',
+            fields:[
+              {
+                iconLeft: 'icon-input',
+                name: 'testadfadsfadsfasdfasdfsddsdfasdfsaf',
+                iconRight: 'icon-input',
+                isLoading: true,
+                value: 'test',
+                path: '/formitem',
+                isClick: true,
+                disabled: true,
+                onClick: this.handleItemClick
+              },
+              {
+                iconLeft: 'icon-input',
+                name: 'hhehehehe',
+                iconRight: 'icon-input',
+                isLoading: true,
+                value: 'test',
+                path: '/formitem',
+                isClick: false,
+                disabled: true
+              }
+            ]
           },
-          {
-            iconLeft: 'icon-input',
-            name: 'hhehehehe',
-            iconRight: 'icon-input',
-            value: 'test',
-            path: '/formitem',
-            isClick: false,
-          }
         ],
         dataSource: [
           {

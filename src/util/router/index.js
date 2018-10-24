@@ -1,14 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import WebIndex from './../../pages/webIndex.vue'
-import Layout from '../../pages/integration/layout.vue'
-import Header from '../../pages/integration/header.vue'
-import FormItem from '../../pages/integration/formPage.vue'
-import TabBar from '../../pages/integration/tabbar.vue'
-import TestHome from '../../pages/integration/testPages/home.vue'
-import TestApply from '../../pages/integration/testPages/apply.vue'
-import TestMe from '../../pages/integration/testPages/me.vue'
-import Cell from '../../pages/integration/cell.vue'
+import WebIndex from '@/pages/webIndex.vue'
+import Layout from '@/pages/integration/layout.vue'
+import Header from '@/pages/integration/header.vue'
+import FormItem from '@/pages/integration/formPage.vue'
+import TabBar from '@/pages/integration/tabbar.vue'
+import TestHome from '@/pages/integration/testPages/home.vue'
+import TestApply from '@/pages/integration/testPages/apply.vue'
+import TestMe from '@/pages/integration/testPages/me.vue'
+import Cell from '@/pages/integration/cell.vue'
+import Form from '@/pages/integration/form.vue'
+import Group from '@/pages/integration/group.vue'
 
 
 Vue.use(Router);
@@ -60,6 +62,16 @@ export default new Router({
           path: '/cell',
           component: Cell,
           meta: {index: '3'},
+        },
+        {
+          path: '/group',
+          component: Group,
+          meta: {index: '4'},
+        },
+        {
+          path: '/form',
+          component: Form,
+          meta: {index: '5'},
         },
       ]
     },

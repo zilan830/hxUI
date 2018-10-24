@@ -22,6 +22,8 @@
     cursor: pointer
     padding-bottom: 5px
     border-bottom: 2px solid #e6f2f2
+    &:first-child
+      margin: 0
     &.active
       transition: all 0.3s
       border-bottom: 2px solid teal
@@ -33,4 +35,13 @@
   border-radius: 3px
   display: block
 
+//针对form给了一个固定值
+.cube-form-field
+  width: 100%
+
+
+.cube-form-group
+  .cube-form-group-legend
+    padding: 10px 15px
+    text-align: left
 

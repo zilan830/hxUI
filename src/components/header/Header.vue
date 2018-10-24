@@ -34,7 +34,7 @@
   import objectAssign from 'object-assign'
 
   export default {
-    name: 'h-header',
+    name: 'hx-header',
     props: {
       leftOptions: Object,
       title: String,

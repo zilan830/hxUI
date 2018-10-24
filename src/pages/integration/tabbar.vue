@@ -53,19 +53,19 @@
             </div>
         </template>
         <template slot="simple-mobile">
-            <h-layout>
+            <hx-layout>
                 <template slot="header">
-                    <h-header :left-options="{showBack: false}">
+                    <hx-header :left-options="{showBack: false}">
                         底部路由切换
-                    </h-header>
+                    </hx-header>
                 </template>
                 <template slot="content">
                     <router-view/>
                 </template>
                 <template slot="footer">
-                    <h-tarbar :tab-column="tabColumn"></h-tarbar>
+                    <hx-tarbar :tab-column="tabColumn"></hx-tarbar>
                 </template>
-            </h-layout>
+            </hx-layout>
         </template>
     </inner-window>
 </template>

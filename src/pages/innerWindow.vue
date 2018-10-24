@@ -9,9 +9,11 @@
                     <h1>{{title}}</h1>
                 </header>
                 <div class="mobile-content" v-if="!simpleMobile">
-                    <cube-scroll>
-                        <slot name="mobile"></slot>
-                    </cube-scroll>
+                    <main class="mobile-main-content">
+                        <cube-scroll>
+                            <slot name="mobile"></slot>
+                        </cube-scroll>
+                    </main>
                 </div>
                 <div class="no-scroll">
                     <slot name="simple-mobile"></slot>
@@ -63,7 +65,7 @@
                 border-radius: 0 0 35px 35px
                 border: 1px solid #edf0f4
                 border-top: none
-                background-color: #f7f7f7
+                background-color: #efeff4
                 .mobile-header
                     background-color: #e6e6e6
                     box-shadow: 0 2px 1px #e9eaea
@@ -79,6 +81,8 @@
                 .mobile-content
                     overflow: auto
                     height: 500px
+                    .mobile-main-content
+                        margin: 10px
                 .no-scroll
                     height: 100%
                     overflow: auto

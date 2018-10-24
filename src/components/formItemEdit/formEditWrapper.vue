@@ -9,7 +9,7 @@
     import components from './fileds/components'
 
     export default {
-      name:'form-edit-wrapper',
+      name:'hx-edit-wrapper',
       props:{
         field:{
           type: Object,

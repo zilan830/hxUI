@@ -1,19 +1,23 @@
 <template>
     <div class="hx-cell-container" @click="handleClick">
         <div class="hx-cell-left">
-            <span class="hx-cell-icon" v-if="dataItem.iconLeft">
-                <i :class="['iconfont', dataItem.iconLeft ? dataItem.iconLeft : 'no-icon']"></i>
+            <span class="hx-cell-icon" v-if="option && option.hasOwnProperty('iconLeft')">
+                <i :class="['iconfont', option && option.hasOwnProperty('iconLeft') ? option.iconLeft : 'no-icon']"></i>
             </span>
             <span class="hx-cell-name" :style="[styles && styles.hasOwnProperty('name') ? styles.name : {}]">
-                {{this.dataItem.name}}
+                {{option && option.hasOwnProperty('name') ? option.name : '默认' }}
             </span>
-            <span class="hx-cell-icon" v-if="dataItem.iconRight">
-                <i :class="['iconfont', dataItem.iconRight ? dataItem.iconRight : 'no-icon']"></i>
+            <span class="hx-cell-icon" v-if="option && option.hasOwnProperty('iconRight')">
+                <i :class="['iconfont', option && option.hasOwnProperty('iconRight') ? option.iconRight : 'no-icon']"></i>
             </span>
         </div>
-        <div class="hx-cell-right" v-if="dataItem.value || dataItem.path">
-            <i class="cubeic-arrow" v-if="dataItem.path"></i>
-            <span class="hx-cell-value" :style="[styles && styles.hasOwnProperty('value') ? styles.value : {}]">{{dataItem.value}}</span>
+        <div class="hx-cell-right"
+             v-if="(option && option.hasOwnProperty('value')) || (option && option.hasOwnProperty('path'))"
+             @click.stop="handleRoute"
+        >
+            <i class="cubeic-arrow" v-if="option.path"></i>
+            <span class="hx-cell-value"
+                  :style="[styles && styles.hasOwnProperty('value') ? styles.value : {}]">{{option && option.hasOwnProperty('value') ? option.value : '默认'}}</span>
         </div>
     </div>
 </template>
@@ -22,14 +26,13 @@
   export default{
     name: 'hx-cell',
     props: {
-      dataItem: {
+      option: {
         iconLeft: String,
         name: String,
         iconRight: String,
         value: String,
         path: String,
         isClick: Boolean,
-        disabled: Boolean,
       },
       //自定义样式，仅限以下属性
       styles: {
@@ -39,15 +42,23 @@
     },
     data(){
       return {
+        isLeftShow: false,
+        isRightShow: false,
+        isNameStyle: false,
+        isValueStyle: false
       }
     },
     methods: {
-      handleClick(){
-        const data = this.dataItem;
-        if (data.isClick) {
-          this.$emit('click')
-        } else if (data.path) {
+      handleClick(e){
+          this.$emit('click',e)
+      },
+      handleRoute(e){
+        //写得有问题，需要优化
+        const data = this.option;
+        if (data.path) {
           this.$router.push(data.path)
+        }else {
+          this.handleClick(e)
         }
       }
     }
@@ -59,32 +70,33 @@
     .hx-cell-container
         display: flex
         height: 46px
-        padding-left: 10px
+        padding: 0 15px
         position: relative
         overflow: hidden
         background-color: $form-bgc
-        &:first-child:before
-            border-top: none
-        &:before
+        &:after
             content: ""
             position: absolute
-            top: 0
+            bottom: 0
             left: 0
             width: 100%
-            height: 1px
-            border-top: 1px solid #d9d9d9
-            transform: scaleY(0.5)
+            display: block
+            border-bottom: 1px solid $textarea-border-color
+            transform-origin: 0 bottom
         .hx-cell-left
             flex: 1
             display: flex
             align-items: center
             overflow: hidden
             .hx-cell-icon
+                &:first-child
+                    margin-right: 10px
+                &:last-child
+                    margin-left: 10px
                 .no-icon
                     display: none
             .hx-cell-name
-                color: $index-list-title-color
-                margin: 0 10px
+                color: $form-color
                 overflow: hidden
                 white-space: nowrap
                 text-overflow: ellipsis
@@ -92,11 +104,12 @@
             flex: 1
             display: flex
             align-items: center
-            color: $index-list-anchor-color
+            color: $form-color
             flex-direction: row-reverse
-            padding-right: 5px
-            .hx-cell-value
-                margin-right: 10px
 
-
+    .cube-form-item
+        .cube-form-field
+            width: 100%
+            .hx-cell-container
+                padding: 0
 </style>

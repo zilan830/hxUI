@@ -40,6 +40,16 @@ const hxMenu = [
         name: 'cell',
         path: '/cell'
       },
+      {
+        index: '1-7',
+        name: 'group',
+        path: '/group'
+      },
+      {
+        index: '1-8',
+        name: 'form',
+        path: '/form'
+      },
     ],
   },
 

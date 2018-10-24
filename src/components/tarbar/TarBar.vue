@@ -9,7 +9,7 @@
 
 <script>
   export default {
-    name:'h-tarbar',
+    name:'hx-tarbar',
     props:['tabColumn'],
     data() {
       return {
