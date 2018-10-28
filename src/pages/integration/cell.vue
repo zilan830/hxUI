@@ -1,36 +1,36 @@
 <template>
     <inner-window title="Cell">
         <template slot="doc">
-            <div class="copy-alert" v-show="successShow">
-                <el-alert
-                        title="复制成功"
-                        type="success"
-                        :closable="false">
-                </el-alert>
-            </div>
             <div class="component-container">
                 <div class="component-doc">
                     <p class="component-header">组件代码</p>
-                    <ul class="code-lists">
-                        <li v-for="item in codeData" :class="{'code-item':true, active:item.isClick}">
-                            <i class="iconfont icon-copy"
-                               v-clipboard:copy="item.code"
-                               v-clipboard:success="onCopy"
-                               v-clipboard:error="onError"
-                            >复制代码</i>
-                            <pre v-highlightjs="item.code"><code class="javascript"></code></pre>
-                        </li>
-                    </ul>
+                    <div>
+                        <ul class="code-lists">
+                            <li v-for="item in codeData" :class="{'code-item':true, active:item.isClick}">
+                                <div class="code-item-container" v-for="it in item.codeList">
+                                    <i class="iconfont icon-copy"
+                                       v-clipboard:copy="it.code"
+                                       v-clipboard:success="onCopy"
+                                       v-clipboard:error="onError"
+                                    >复制代码</i>
+                                    <pre v-highlightjs="it.code"><code class="javascript"></code></pre>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </template>
         <template slot="mobile">
             <ul class="component-lists">
                 <li :class="{'component-item':true, active:this.index === 0}" @click="handleClick(0)">
-                    <hx-cell v-for="item in dataLists" :dataItem="item" @click="item.isClick ? item.onClick() : {}"></hx-cell>
+                    <hx-cell v-for="item in dataLists" :option="item" v-on="item.events"></hx-cell>
                 </li>
                 <li :class="{'component-item':true, active:this.index === 1}" @click="handleClick(1)">
-                    <hx-cells :dataSource="dataSource"></hx-cells>
+                    <hx-cells :option="option"></hx-cells>
+                </li>
+                <li :class="{'component-item':true, active:this.index === 2}" @click="handleClick(2)">
+                    <hx-collapse :option="option"></hx-collapse>
                 </li>
             </ul>
         </template>
@@ -49,71 +49,151 @@
         codeData: [
           {
             isClick: true,
-            code: '<h-header :left-options="{showBack: false}">第一个</h-header>'
+            codeList: [
+              {
+                code: '<hx-cell v-for="item in dataLists" :option="item" v-on="item.events"></hx-cell>'
+              },
+              {
+                code: `export default {
+        data(){
+          dataLists: [
+            {
+                iconLeft: 'icon-input',
+                name: '所有元素',
+                iconRight: 'icon-input',
+                value: 'test',
+                arrowIcon: 'left',
+                events: {
+                'click': () => this.handleItemClick()
+                }
+            },
+            {
+                name: '这是可以占领整个一行的',
+                isAllLine: true
+            }
+          ]
+        },
+        method:{
+          handleItemClick(e) {
+              const toast = this.$createToast({
+                time: 1000,
+                txt: '点击成功'
+              });
+              toast.show()
+            }
+        }
+  }`
+              },
+            ],
           },
           {
             isClick: false,
-            code: '<h-header>第二个</h-header>'
+            codeList: [
+              {
+                code: '<hx-cells v-for="item in dataSource" :option="item"></hx-cells>'
+              },
+              {
+                code: `export default {
+        data(){
+          option:{
+            name: 'total',
+            value: '6666',
+            isExpand: true,
+            children: [
+              {
+                name: 'first',
+                value: '1111',
+              },
+              {
+                name: 'second',
+                value: '2222',
+              },
+              {
+                name: 'third',
+                value: '3333',
+              }
+            ]
+          },
+        }
+  }`
+              }
+            ],
+
+          },
+          {
+            isClick: false,
+            codeList: [
+              {
+                code: '<hx-collapse :option="option"></hx-collapse>'
+              },
+              {
+                code: `export default {
+        data(){
+          option:{
+            name: 'total',
+            value: '6666',
+            isExpand: true,
+            children: [
+              {
+                name: 'first',
+                value: '1111',
+              },
+              {
+                name: 'second',
+                value: '2222',
+              },
+              {
+                name: 'third',
+                value: '3333',
+              }
+            ]
+          },
+        }
+  }`
+              }
+            ],
+
           },
         ],
         index: 0,
-        successShow: false,
-        dataLists:[
+        dataLists: [
           {
             iconLeft: 'icon-input',
-            name: 'testadfadsfadsfasdfasdfsddsdfasdfsaf',
+            name: '所有元素',
             iconRight: 'icon-input',
             value: 'test',
-            isClick: true,
-            onClick: this.handleItemClick
+            arrowIcon: 'left',
+            events: {
+              'click': () => this.handleItemClick()
+            }
           },
           {
-            iconLeft: 'icon-input',
-            name: 'hhehehehe',
-            iconRight: 'icon-input',
-            value: 'test',
-            path: '/formitem',
-            isClick: false,
+            name: '这是可以占领整个一行的',
+            isAllLine: true
           }
         ],
-        dataSource: [
-          {
-            name: 'total',
-            value: '6666',
-            children: [
-              {
-                name: 'first',
-                value: '1111'
-              },
-              {
-                name: 'second',
-                value: '2222'
-              },
-              {
-                name: 'third',
-                value: '3333'
-              }
-            ]
-          },
-          {
-            name: 'total2',
-            value: '6666',
-            children: [
-              {
-                name: 'first',
-                value: '1111'
-              },
-              {
-                name: 'second',
-                value: '2222'
-              },
-              {
-                name: 'third',
-                value: '3333'
-              }
-            ]
-          }
-        ],
+        option: {
+          name: 'total',
+          value: '6666',
+          isExpand: true,
+          children: [
+            {
+              name: 'first',
+              value: '1111',
+              id: 1
+            },
+            {
+              name: 'second',
+              value: '2222',
+              id: 2
+            },
+            {
+              name: 'third',
+              value: '3333',
+              id: 3
+            }
+          ]
+        },
       }
     },
     methods: {
@@ -131,17 +211,21 @@
         }
       },
       onCopy(){
-        this.successShow = true;
-        setTimeout(() => {
-          this.successShow = false
-        }, 500)
+        this.$message({
+          message: '复制成功',
+          type: 'success'
+        });
       },
       onError(){
         console.log('$PARANSfalse')
       },
       handleItemClick() {
-        console.log('$PARANS!!!!')
-      }
+        const toast = this.$createToast({
+          time: 1000,
+          txt: '点击成功'
+        });
+        toast.show()
+      },
     }
   }
 </script>

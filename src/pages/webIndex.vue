@@ -26,9 +26,9 @@
                     </el-menu-item>
                 </el-menu>
             </nav>
-            <div class="content-inner-container">
+            <!--<div class="content-inner-container">-->
                 <router-view></router-view>
-            </div>
+            <!--</div>-->
         </section>
     </div>
 </template>
@@ -107,11 +107,12 @@
             overflow: hidden
             .content-menu
                 width: 200px
-                overflow: auto
+                overflow: hidden
                 display: flex
                 flex-direction: column
                 .el-menu-vertical-demo.el-menu
                     height: 100%
+                    overflow: auto
             .content-inner-container
                 display: flex
                 overflow: hidden

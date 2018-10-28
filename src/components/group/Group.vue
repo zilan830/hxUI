@@ -1,7 +1,7 @@
 <template>
     <div class="hx-group-container">
         <slot>
-            <hx-group-item v-for="item in data" :data="item"></hx-group-item>
+            <hx-group-item v-for="item in schema.groups" :legend="item.legend" :fields="item.fields"></hx-group-item>
         </slot>
     </div>
 </template>
@@ -15,7 +15,9 @@
       HxGroupItem,
     },
     props: {
-      data: Array
+      schema: {
+        groups: Array
+      }
     },
     data(){
       return {}
@@ -31,6 +33,5 @@
         position: relative
         background-color: $form-group-legend-bgc
         line-height: 1.429
-
 
 </style>

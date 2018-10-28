@@ -12,10 +12,8 @@
             </span>
         </div>
         <div class="hx-cell-right"
-             v-if="(option && option.hasOwnProperty('value')) || (option && option.hasOwnProperty('path'))"
-             @click.stop="handleRoute"
-        >
-            <i class="cubeic-arrow" v-if="option.path"></i>
+             v-if="!isShowRight">
+            <i :class="rightIcon"></i>
             <span class="hx-cell-value"
                   :style="[styles && styles.hasOwnProperty('value') ? styles.value : {}]">{{option && option.hasOwnProperty('value') ? option.value : '默认'}}</span>
         </div>
@@ -30,9 +28,11 @@
         iconLeft: String,
         name: String,
         iconRight: String,
+        //占全行,仅限右侧文字
+        isAllLine: Boolean,
         value: String,
-        path: String,
-        isClick: Boolean,
+        //默认样式为向右侧箭头:left，可自定义图标
+        arrowIcon: String,
       },
       //自定义样式，仅限以下属性
       styles: {
@@ -48,19 +48,31 @@
         isValueStyle: false
       }
     },
+    computed:{
+      //是否整行展示
+      isShowRight() {
+        if(this.option && this.option.hasOwnProperty('isAllLine')){
+          return this.option.isAllLine
+        }
+        return false
+      },
+      //右侧箭头位置icon图标更换
+      rightIcon() {
+        if (this.option && this.option.hasOwnProperty('arrowIcon')){
+          if (this.option.arrowIcon === 'left'){
+            return 'cubeic-arrow'
+          }else{
+            return this.option.arrowIcon
+          }
+        }
+        return 'no-right-icon'
+      }
+    },
     methods: {
+      //点击事件统一由用户操作，组件内不设定
       handleClick(e){
           this.$emit('click',e)
       },
-      handleRoute(e){
-        //写得有问题，需要优化
-        const data = this.option;
-        if (data.path) {
-          this.$router.push(data.path)
-        }else {
-          this.handleClick(e)
-        }
-      }
     }
   }
 </script>
@@ -106,10 +118,15 @@
             align-items: center
             color: $form-color
             flex-direction: row-reverse
+            .hx-cell-value
+                margin-right: 5px
 
     .cube-form-item
         .cube-form-field
             width: 100%
             .hx-cell-container
                 padding: 0
+
+    .no-right-icon
+        display: none
 </style>

@@ -42,7 +42,7 @@
         flex: 1
         .doc-container
             flex: 1
-            overflow: hidden
+            overflow: auto
             margin: 5px
             border: 1px solid #e6e6e6
             border-radius: 3px

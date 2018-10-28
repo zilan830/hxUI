@@ -27,7 +27,7 @@
         <template slot="mobile">
             <ul class="component-lists">
                 <li :class="{'component-item':true, active:this.index === 0}" @click="handleClick(0)">
-                    <hx-group :data="dataLists">
+                    <hx-group :schema="schema">
                     </hx-group>
                 </li>
                 <li :class="{'component-item':true, active:this.index === 1}" @click="handleClick(1)">
@@ -59,50 +59,62 @@
         ],
         index: 0,
         successShow: false,
-        dataLists: [
-          {
-            legend:'标题1',
-            fields:[
-              {
-                iconLeft: 'icon-input',
-                name: 'testadfadsfadsfasdfasdfsddsdfasdfsaf',
-                iconRight: 'icon-input',
-                isLoading: true,
-                value: 'test',
-                path: '/formitem',
-                isClick: true,
-                disabled: true,
-                onClick: this.handleItemClick
-              },
-              {
-                iconLeft: 'icon-input',
-                name: 'hhehehehe',
-                iconRight: 'icon-input',
-                isLoading: true,
-                value: 'test',
-                path: '/formitem',
-                isClick: false,
-                disabled: true
-              }
-            ]
-          },
-        ],
-        dataSource: [
+        schema: {
+          groups:[
+            {
+              legend: '标题1',
+              fields: [
+                {
+                  type:'hx-cell',
+                  props:{
+                    option:{
+                      iconLeft: 'icon-input',
+                      name: 'testadfadsfadsfasdfasdfsddsdfasdfsaf',
+                      iconRight: 'icon-input',
+                      value: 'test',
+                      arrowIcon: 'left',
+                    },
+                  },
+                  events: {
+                    'click': (e) => {
+                      console.log('$PARANS!!', e)
+                    }
+                  }
+                },
+                {
+                  type:'hx-cell',
+                  props:{
+                    option:{
+                      iconLeft: 'icon-input',
+                      name: 'zheshiyige',
+                      value: 'test',
+                      arrowIcon: 'left',
+                    },
+                  }
+                },
+              ]
+            },
+          ]
+        },
+        schemas: [
           {
             name: 'total',
             value: '6666',
             children: [
               {
                 name: 'first',
-                value: '1111'
+                value: '1111',
+                id: 1
               },
               {
                 name: 'second',
-                value: '2222'
+                value: '2222',
+                id: 2
               },
               {
                 name: 'third',
-                value: '3333'
+                value: '3333',
+                id: 3
               }
             ]
           },
@@ -112,15 +124,18 @@
             children: [
               {
                 name: 'first',
-                value: '1111'
+                value: '1111',
+                id: 4
               },
               {
                 name: 'second',
-                value: '2222'
+                value: '2222',
+                id: 5
               },
               {
                 name: 'third',
-                value: '3333'
+                value: '3333',
+                id: 6
               }
             ]
           }
