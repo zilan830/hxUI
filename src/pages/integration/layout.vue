@@ -1,13 +1,6 @@
 <template>
     <inner-window title="layout" :simpleMobile="simpleMobile">
         <template slot="doc">
-            <div class="copy-alert" v-show="successShow">
-                <el-alert
-                        title="复制成功"
-                        type="success"
-                        :closable="false">
-                </el-alert>
-            </div>
             <div class="component-container">
                 <div class="component-doc">
                     <p class="component-header">组件代码</p>
@@ -91,10 +84,10 @@
     },
     methods: {
       onCopy: function () {
-        this.successShow = true;
-        setTimeout(() => {
-          this.successShow = false
-        }, 500)
+        this.$message({
+          message: '复制成功',
+          type: 'success'
+        });
       },
       onError: function (e) {
 

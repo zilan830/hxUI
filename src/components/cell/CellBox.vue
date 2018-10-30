@@ -1,5 +1,5 @@
 <template>
-    <div class="hx-cell-container" @click="handleClick">
+    <div :class="['hx-cell-container', isActive ? 'hx-cell-click' : '']" @click="handleClick">
         <div class="hx-cell-left">
             <span class="hx-cell-icon" v-if="option && option.hasOwnProperty('iconLeft')">
                 <i :class="['iconfont', option && option.hasOwnProperty('iconLeft') ? option.iconLeft : 'no-icon']"></i>
@@ -38,40 +38,43 @@
       styles: {
         name: Object,
         value: Object,
-      }
+      },
     },
     data(){
       return {
         isLeftShow: false,
         isRightShow: false,
         isNameStyle: false,
-        isValueStyle: false
+        isValueStyle: false,
       }
     },
-    computed:{
+    computed: {
       //是否整行展示
       isShowRight() {
-        if(this.option && this.option.hasOwnProperty('isAllLine')){
+        if (this.option && this.option.hasOwnProperty('isAllLine')) {
           return this.option.isAllLine
         }
         return false
       },
       //右侧箭头位置icon图标更换
       rightIcon() {
-        if (this.option && this.option.hasOwnProperty('arrowIcon')){
-          if (this.option.arrowIcon === 'left'){
+        if (this.option && this.option.hasOwnProperty('arrowIcon') && this.option.arrowIcon) {
+          if (this.option.arrowIcon === 'left') {
             return 'cubeic-arrow'
-          }else{
+          } else {
             return this.option.arrowIcon
           }
         }
         return 'no-right-icon'
+      },
+      isActive() {
+        return this.option && this.option.hasOwnProperty('arrowIcon') && this.option.arrowIcon
       }
     },
     methods: {
       //点击事件统一由用户操作，组件内不设定
       handleClick(e){
-          this.$emit('click',e)
+        this.$emit('click', e)
       },
     }
   }
@@ -79,6 +82,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
     @require '~cube-ui/src/common/stylus/variable.styl';
+
     .hx-cell-container
         display: flex
         height: 46px
@@ -129,4 +133,17 @@
 
     .no-right-icon
         display: none
+
+    .hx-cell-click:active
+        transition: all 0.3s
+        background-color: $action-sheet-active-color
+        -webkit-tap-highlight-color: $action-sheet-active-color
+        .hx-cell-left
+            .hx-cell-name
+                transition: all 0.3s
+                color: white
+        .hx-cell-right
+            .hx-cell-value
+                transition: all 0.3s
+                color: white
 </style>

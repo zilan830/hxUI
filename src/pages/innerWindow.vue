@@ -37,6 +37,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
     .inner-wrapper-container
+        overflow: hidden
         display: flex
         height: 100%
         flex: 1

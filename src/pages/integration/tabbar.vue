@@ -1,54 +1,32 @@
 <template>
     <inner-window title="layout" :simpleMobile="simpleMobile">
         <template slot="doc">
-            <div class="copy-alert" v-show="this.successShow">
-                <el-alert
-                        title="复制成功"
-                        type="success"
-                        :closable="false">
-                </el-alert>
-            </div>
             <div class="component-container">
                 <div class="component-doc">
                     <p class="component-header">组件代码</p>
                     <ul class="code-lists">
-                        <li class="code-item active">
-                            <i class="iconfont icon-copy"
-                               v-clipboard:copy="code"
-                               v-clipboard:success="onCopy"
-                               v-clipboard:error="onError"
-                            >复制代码</i>
-                            <pre v-highlightjs="code"><code class="javascript"></code></pre>
-                        </li>
-                        <li class="code-item active">
-                            <i class="iconfont icon-copy"
-                               v-clipboard:copy="code"
-                               v-clipboard:success="onCopy"
-                               v-clipboard:error="onError"
-                            >复制代码</i>
-                            <pre v-highlightjs><code class="javascript">export default {
-            data(){
-                    tabColumn: {
-                        selectedLabelDefault: '首页',
-                        tabs: [{
-                        label: '首页',
-                        icon: 'cubeic-home',
-                        path: '/testhome'
-                        }, {
-                        label: '应用',
-                        icon: 'cubeic-like',
-                        path: '/testapply'
-                        }, {
-                        label: '我的',
-                        icon: 'cubeic-person',
-                        path: '/testme'
-                        }],
-                    }
-            }
-    }
-                            </code></pre>
+                        <li v-for="item in codeData" :class="{'code-item':true, active:item.isClick}">
+                            <div class="code-item-container" v-for="it in item.codeList">
+                                <i class="iconfont icon-copy"
+                                   v-clipboard:copy="it.code"
+                                   v-clipboard:success="onCopy"
+                                   v-clipboard:error="onError"
+                                >复制代码</i>
+                                <pre v-highlightjs="it.code"><code class="javascript"></code></pre>
+                            </div>
                         </li>
                     </ul>
+                    <div class="component-explain">
+                        <p>注意点：</p>
+                        <ul>
+                            <li>
+                                <p>
+                                    此组件是基于 cube-ui 的二次封装，
+                                    主要是针对底部路由切换，因此几乎没有给开放度。
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </template>
@@ -79,7 +57,37 @@
     },
     data(){
       return {
-        code: `<h-tarbar :tab-column="tabColumn"></h-tarbar>`,
+        codeData: [
+          {
+            isClick: true,
+            codeList: [
+              {
+                code: '<hx-tarbar :tab-column="tabColumn"></hx-tarbar>'
+              },
+              {
+                code: `export default {
+            data(){
+                    tabColumn: {
+                        selectedLabelDefault: '首页',
+                        tabs: [{
+                        label: '首页',
+                        icon: 'cubeic-home',
+                        path: '/testhome'
+                        }, {
+                        label: '应用',
+                        icon: 'cubeic-like',
+                        path: '/testapply'
+                        }, {
+                        label: '我的',
+                        icon: 'cubeic-person',
+                        path: '/testme'
+                        }],
+                    }
+            }`
+              },
+            ],
+          },
+        ],
         successShow: false,
         simpleMobile: true,
         tabColumn: {
@@ -102,10 +110,10 @@
     },
     methods: {
       onCopy: function () {
-        this.successShow = true;
-        setTimeout(() => {
-          this.successShow = false
-        }, 500)
+        this.$message({
+          message: '复制成功',
+          type: 'success'
+        });
       },
       onError: function (e) {
 

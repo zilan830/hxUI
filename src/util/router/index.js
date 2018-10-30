@@ -22,6 +22,7 @@ export default new Router({
       path: '/',
       component: WebIndex,
       meta: {index: '0'},
+      redirect: '/layout',
       children: [
         {
           path: '/formitem',

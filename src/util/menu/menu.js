@@ -10,11 +10,12 @@ const hxMenu = [
     icon: 'el-icon-star-on',
     active: '1-1',
     children:[
-      {
-        index: '1-1',
-        name: 'form components',
-        path: '/formitem'
-      },
+      //第三期开放完善
+      // {
+      //   index: '1-1',
+      //   name: 'form components',
+      //   path: '/formitem'
+      // },
       // {
       //   index: '1-2',
       //   name: '表单示例',

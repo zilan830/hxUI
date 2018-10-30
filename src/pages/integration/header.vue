@@ -1,24 +1,19 @@
 <template>
     <inner-window title="Header">
         <template slot="doc">
-            <div class="copy-alert" v-show="this.successShow">
-                <el-alert
-                        title="复制成功"
-                        type="success"
-                        :closable="false">
-                </el-alert>
-            </div>
             <div class="component-container">
                 <div class="component-doc">
                     <p class="component-header">组件代码</p>
                     <ul class="code-lists">
                         <li v-for="item in codeData" :class="{'code-item':true, active:item.isClick}">
-                            <i class="iconfont icon-copy"
-                               v-clipboard:copy="item.code"
-                               v-clipboard:success="onCopy"
-                               v-clipboard:error="onError"
-                            >复制代码</i>
-                            <pre v-highlightjs="item.code"><code class="javascript"></code></pre>
+                            <div class="code-item-container" v-for="it in item.codeList">
+                                <i class="iconfont icon-copy"
+                                   v-clipboard:copy="it.code"
+                                   v-clipboard:success="onCopy"
+                                   v-clipboard:error="onError"
+                                >复制代码</i>
+                                <pre v-highlightjs="it.code"><code class="javascript"></code></pre>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -36,6 +31,14 @@
                         第二个
                     </hx-header>
                 </li>
+                <li :class="{'component-item':true, active:this.index === 2}" @click="handleClick(2)">
+                    <hx-header
+                            :right-options="{showMore: true}"
+                            @on-click-more="showMenus = !showMenus">
+                        第三个
+                    </hx-header>
+                    <hx-header-pop v-model="showMenus" @on-click-empty="showMenus = false" :menus="menus"></hx-header-pop>
+                </li>
             </ul>
         </template>
     </inner-window>
@@ -50,21 +53,78 @@
     },
     data(){
       return {
+        showMenus: false,
         codeData: [
           {
             isClick: true,
-            code: '<hx-header :left-options="{showBack: false}">第一个</hx-header>'
+            codeList: [
+              {
+                code: `<hx-header :left-options="{showBack: false}">第一个</hx-header>`
+              },
+            ],
           },
           {
             isClick: false,
-            code: '<hx-header>第二个</hx-header>'
+            codeList: [
+              {
+                code: `<hx-header>第二个</hx-header>`
+              },
+            ],
+          },
+          {
+            isClick: false,
+            codeList: [
+              {
+                code: `<hx-header :right-options="{showMore: true}" @on-click-more="showMenus = !showMenus">第三个</hx-header>
+<hx-header-pop v-model="showMenus" @on-click-empty="showMenus = false" :menus="menus"></hx-header-pop>`
+              },
+              {
+                code: `export default {
+        data(){
+           menus:[{
+          option: {
+            name: '按钮1',
+            isAllLine: true
+          },
+          events: {
+            'click': () => this.handleClick()
+          }
+        }, {
+          option: {
+            name: '按钮2',
+            isAllLine: true
+          },
+          events: {
+            'click': () => this.handleClick()
+          }
+        },]
+        }}`
+              }
+            ],
           },
         ],
         index: 0,
-        successShow:false
+        menus:[{
+          option: {
+            name: '按钮1',
+            isAllLine: true
+          },
+          events: {
+            'click': () => this.handleClick()
+          }
+        }, {
+          option: {
+            name: '按钮2',
+            isAllLine: true
+          },
+          events: {
+            'click': () => this.handleClick()
+          }
+        },]
       }
     },
     methods: {
+
       handleClick(index){
         this.index = index;
         const codeData = [...this.codeData];
@@ -79,10 +139,10 @@
         }
       },
       onCopy: function () {
-        this.successShow = true;
-        setTimeout(() => {
-          this.successShow = false
-        }, 500)
+        this.$message({
+          message: '复制成功',
+          type: 'success'
+        });
       },
       onError: function (e) {
 

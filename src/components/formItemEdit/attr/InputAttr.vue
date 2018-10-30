@@ -63,7 +63,7 @@
     },
     watch: {
       attr: {
-        handler:function () {
+        handler: function () {
           this.form = isEmpty(this.attr) ? this.attr : {
             label: `序列${this.index}-输入框`,
             type: 'text',
@@ -74,7 +74,8 @@
             maxlength: 60,
             placeholder: '',
           }
-        }
+        },
+        deep: true,
       }
     },
     data() {

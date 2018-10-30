@@ -30,12 +30,17 @@
       transition: all 0.3s
       border-bottom: 2px solid teal
 
-//组件文档说明头部弹出提示
-.copy-alert
-  position: absolute
-  width: calc(100% - 424px)
-  border-radius: 3px
-  display: block
+//组件说明
+.component-explain
+  margin: 10px 20px
+  text-align: left
+  line-height: 28px
+  > p
+    margin-top: 10px
+  > ul
+    padding: 0 20px
+    > li
+      list-style-type: square
 
 //针对form给了一个固定值
 .cube-form-field
@@ -55,4 +60,5 @@
 .cubeic-select.up
   transform: rotate(180deg)
   transition: all 0.3s
+
 

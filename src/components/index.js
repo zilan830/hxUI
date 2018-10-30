@@ -5,6 +5,7 @@ import HxLayout from './layout/Layout.vue'
 import HxTarbar from './tarbar/TarBar.vue'
 import HxCell from './cell/CellBox.vue'
 import HxCells from './cell/CellForm.vue'
+import HxHeaderPop from './header/HeaderPop.vue'
 import HxGroup from './group/Group.vue'
 import HxCollapse from './group/CollapseGroup.vue'
 import FormEditWrapper from './formItemEdit/formEditWrapper.vue'
@@ -22,7 +23,8 @@ const Components = {
   HxCell,
   HxCells,
   HxGroup,
-  HxCollapse
+  HxCollapse,
+  HxHeaderPop
 };
 
 Object.keys(Components).forEach(name => {
