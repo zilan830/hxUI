@@ -139,10 +139,17 @@
         background-color: $action-sheet-active-color
         -webkit-tap-highlight-color: $action-sheet-active-color
         .hx-cell-left
+            >span
+                >i
+                    transition: all 0.3s
+                    color: white
             .hx-cell-name
                 transition: all 0.3s
                 color: white
         .hx-cell-right
+            >i
+                transition: all 0.3s
+                color: white
             .hx-cell-value
                 transition: all 0.3s
                 color: white
