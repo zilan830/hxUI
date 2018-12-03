@@ -5,9 +5,7 @@
         </div>
         <div class="hx-layout-content">
             <main class="hx-main-content">
-                <cube-scroll>
                     <slot name="content"></slot>
-                </cube-scroll>
             </main>
         </div>
         <div class="hx-layout-footer">
@@ -19,32 +17,21 @@
 <script>
   export default {
     name: 'hx-layout',
-    data() {
-      return {}
-    },
-    methods: {
-      selectItem() {
-
-      },
-      clickTitle() {
-
-      }
-    }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
     .hx-layout-container
-        height: 100%
+        height: 100vh
         display: flex
         overflow: hidden
         flex-direction: column
         background-color: #f7f7f7
         .hx-layout-content
             flex: 1
-            overflow: auto
+            overflow: hidden
             .hx-main-content
-                margin: 10px
+                height: 100%
 
 
 </style>

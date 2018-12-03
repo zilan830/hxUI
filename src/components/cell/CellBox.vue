@@ -15,7 +15,7 @@
              v-if="!isShowRight">
             <i :class="rightIcon"></i>
             <span class="hx-cell-value"
-                  :style="[styles && styles.hasOwnProperty('value') ? styles.value : {}]">{{option && option.hasOwnProperty('value') ? option.value : '默认'}}</span>
+                  :style="[styles && styles.hasOwnProperty('value') ? styles.value : {}]">{{ option.value }}</span>
         </div>
     </div>
 </template>
@@ -136,21 +136,21 @@
 
     .hx-cell-click:active
         transition: all 0.3s
-        background-color: $action-sheet-active-color
-        -webkit-tap-highlight-color: $action-sheet-active-color
+        background-color: $color-light-grey-opacity
+        -webkit-tap-highlight-color: $color-light-grey-opacity
         .hx-cell-left
-            >span
-                >i
-                    transition: all 0.3s
-                    color: white
-            .hx-cell-name
-                transition: all 0.3s
-                color: white
+            // >span
+            //     >i
+            //         transition: all 0.3s
+            //         color: white
+            // .hx-cell-name
+            //     transition: all 0.3s
+            //     color: white
         .hx-cell-right
-            >i
-                transition: all 0.3s
-                color: white
-            .hx-cell-value
-                transition: all 0.3s
-                color: white
+            // >i
+            //     transition: all 0.3s
+            //     color: white
+            // .hx-cell-value
+            //     transition: all 0.3s
+            //     color: white
 </style>

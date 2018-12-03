@@ -1,6 +1,6 @@
 {
   "name": "hxui-components",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -59,8 +59,8 @@
     "Android >= 4.0",
     "iOS >= 8"
   ],
-  "main": "./dist/hxui.common.js",
   "license": "MIT",
+  "main": "./dist/hxui.common.js",
   "transformModules": {
     "cube-ui": {
       "transform": "cube-ui/src/modules/${member}",
